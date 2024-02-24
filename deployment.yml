@@ -24,12 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejswebapp-service
+  name: nodesy-service
   labels:
     app: nodejswebapp
 spec:
   selector:
-    app: nodejswebapp
+    app: nodesy-app
   ports:
   - port: 3000
   type: LoadBalancer
