@@ -1,34 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodesy-deployment
+  name: nodejswebapp-deployment
   labels:
-    app: nodesy-app
+    app: nodejswebapp
 spec:
-  replicas: 10
+  replicas: 4
   selector:
     matchLabels:
-      app: nodesy-app
+      app: nodejswebapp
   template:
     metadata:
       labels:
-        app: nodesy-app
+        app: nodejswebapp
     spec:
       containers:
-        - name: nodesy-container
-          image: mxqeettasawaracr.azurecr.io/nodejswebapp:v1.0.0
-          ports:
-           - containerport: 3000
+      - name: nodejswebapp-container
+        image: mxqeettasawaracr.azurecr.io/nodejswebapp:v1.0.0
+        ports:
+        
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodesy-service
+  name: nodejswebapp-service
+  labels:
+    app: nodejswebapp
 spec:
   selector:
-    app: nodesy-app
+    app: nodejswebapp
   ports:
-    - protocol: TCP
-      port: 3000
-      targetport: 3000
+  - port: 3000
   type: LoadBalancer
